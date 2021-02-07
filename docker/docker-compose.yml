@@ -10,6 +10,7 @@ services:
             - MYSQL_DATABASE=easyappointments
         ports:
             - "8001:3306"
+        restart: unless-stopped
     server:
         build: ./server
         image: easyappointments-server:v1
@@ -19,3 +20,4 @@ services:
         volumes:
             - ../:/var/www/html
             - ./server/php.ini:/usr/local/etc/php/conf.d/99-overrides.ini
+        restart: unless-stopped
